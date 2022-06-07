@@ -35,19 +35,16 @@
     })
         }
     // 日期失去焦点
-    function date() {
-       var birthday = $('input[name="birthday"]').val()
-        var reg = /^\d{4}-\d{2}-\d{2}$/;
-        if(reg.test(birthday)){
-             var date = new Date(birthday);
-        var age = new Date().getFullYear()-date.getFullYear()
+function date() {
+    var birthday = $('input[name="birthday"]').val()
+    var reg = /^\d{4}-\d{2}-\d{2}$/;
+    if (reg.test(birthday)) {
+        var date = new Date(birthday);
+        var age = new Date().getFullYear() - date.getFullYear()
         $('input[name="age"]').val(age)
-        }
-        else{
-            alert("日期格式错误!")
-        }
-
-
+    } else {
+        alert("日期格式错误!")
     }
+}
 
 

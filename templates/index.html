@@ -55,7 +55,7 @@
                 <td class="col-2 text">{{ i.birthday }}</td>
                 <td class="col-2 text">{{ i.address }}</td>
                 <td class="col-2 text">{{ i.current_address }}</td>
-                <td class="col-2 text"><div style="display: flex;flex-direction: row; justify-content: space-between;padding: 0 30px"><input class="btn btn-success btn-xs" d="{{ i.id }}"  type="button" value="编辑"><input type="button" d="{{ i.id }}" class="btn btn-danger btn-xs" value="删除" onclick="commit_delete(this)"></div></td>
+                <td class="col-2 text"><div style="display: flex;flex-direction: row; justify-content: space-between;padding: 0 30px"><input class="btn btn-success btn-xs" d="{{ i.id }}"  type="button" value="编辑" onclick="edit(this)"><input type="button" d="{{ i.id }}" class="btn btn-danger btn-xs" value="删除" onclick="commit_delete(this)"></div></td>
             </tr>
         {% endfor %}
         <tr id="foot">
@@ -113,6 +113,54 @@
         </div>
     </form>
 
+{#编辑表单#}
+  <form id="form2" style="display: none;width: 450px" method="post"
+          class="hide">
+        <div style="display: flex;flex-direction: row;justify-content: space-between">
+            <div style="font-size: 20px;margin:5px 0 30px 10px">
+                编辑信息
+            </div>
+            <div>
+                <button style="border: 0;background-color:#fff "
+                        onclick="return hide1()">X
+                </button>
+            </div>
+        </div>
+        <div style="display: flex;flex-direction: column;padding: 0 20px">
+              <div class="element"><label
+                    class="label-default">工号</label><input disabled
+                    name="id1" type="text"
+                    class="form-control"></div>
+            <div class="element"><label
+                    class="label-default">姓名</label><input
+                    name="name1" type="text"
+                    class="form-control"></div>
+            <div class="element"><label
+                    class="label-default">年龄</label><input disabled
+                    name="age1" type="text"
+                    class="form-control"></div>
+            <div class="element"><label
+                    class="label-default">出生年月</label><input
+                    onblur="date1()"
+                    placeholder="例如:2000-06-16"
+                    name="birthday1" type="text"
+                    class="form-control"></div>
+            <div class="element"><label
+                    class="label-default">户籍地址</label><input
+                    name="address1" type="text"
+                    class="form-control"></div>
+            <div class="element"><label
+                    class="label-default">当前住址</label><input
+                    name="current_address1" type="text"
+                    class="form-control"></div>
+            <div align="center"><input type="button"
+                                       value="更新"
+                                       class="btn btn-success"
+                                       onclick="commit_edit()">
+            </div>
+
+        </div>
+    </form>
 
 </div>
 </body>
@@ -121,5 +169,5 @@
 <script src="../static/js/add.js">
 </script>
 <script src="../static/js/delete.js"></script>
-
+<script src="../static/js/edit.js"></script>
 </html>

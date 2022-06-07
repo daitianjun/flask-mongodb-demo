@@ -13,17 +13,24 @@ def index():
 
 @api.resource('/rest')
 class System(Resource):
+    def __init__(self):
+        self.parse = reqparse.RequestParser()
+        self.parse.add_argument('id', type=int)
     def post(self):
         data=request.json
         manager.insert(data)
         return {'message':'add success'}
     def delete(self):
-        parse = reqparse.RequestParser()
-        parse.add_argument('id',type=int)
-        data=parse.parse_args()
-        print(data)
+        data=self.parse.parse_args()
         manager.collection.delete_one(data)
         return {'message':'delete success'}
+    def put(self):
+        dic = request.json
+        data = self.parse.parse_args()
+        dic.pop('id')
+        manager.collection.update_one(data,{"$set":dic})
+        return {'message': 'put success'}
+
 
 
 

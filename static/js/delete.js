@@ -3,7 +3,6 @@
 function commit_delete(obj) {
 
   var id = $(obj).attr('d')
-    console.log(id)
   var tr = $('#'+id)
   tr.remove()
      $.ajax({
